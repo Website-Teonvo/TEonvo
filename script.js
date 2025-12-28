@@ -188,6 +188,134 @@ function initBurgerMenu(locoScroll, isMobile) {
 }
 
 // ==========================================
+// SWIPER INITIALIZATION
+// ==========================================
+function initSwiper() {
+    // Check if Swiper library is loaded
+    if (typeof Swiper !== 'undefined') {
+        const swiperElement = document.querySelector('.mySwiper');
+        
+        if (swiperElement) {
+            const swiper = new Swiper('.mySwiper', {
+                // Basic parameters
+                slidesPerView: 1.2,
+                spaceBetween: 30,
+                loop: false,
+                grabCursor: true,
+                centeredSlides: false,
+                
+                // Responsive breakpoints
+                breakpoints: {
+                    // When window width is >= 480px
+                    480: {
+                        slidesPerView: 1.5,
+                        spaceBetween: 25
+                    },
+                    // When window width is >= 768px
+                    768: {
+                        slidesPerView: 2.5,
+                        spaceBetween: 30
+                    },
+                    // When window width is >= 1024px
+                    1024: {
+                        slidesPerView: 3.5,
+                        spaceBetween: 35
+                    },
+                    // When window width is >= 1440px
+                    1440: {
+                        slidesPerView: 4.2,
+                        spaceBetween: 40
+                    }
+                },
+                
+                // Smooth scrolling
+                freeMode: {
+                    enabled: true,
+                    sticky: false,
+                    momentum: true,
+                    momentumRatio: 0.5,
+                    momentumVelocityRatio: 0.5,
+                },
+                
+                // Enable keyboard control
+                keyboard: {
+                    enabled: true,
+                    onlyInViewport: true,
+                },
+                
+                // Enable mousewheel control
+                mousewheel: {
+                    forceToAxis: true,
+                    sensitivity: 0.5,
+                },
+                
+                // Speed of transition
+                speed: 600,
+                
+                // Prevent clicks during transition
+                preventClicks: true,
+                preventClicksPropagation: true,
+                
+                // Touch settings
+                touchRatio: 1,
+                touchAngle: 45,
+                simulateTouch: true,
+                shortSwipes: true,
+                longSwipes: true,
+                longSwipesRatio: 0.5,
+                longSwipesMs: 300,
+            });
+
+            // Optional: Custom mover element interaction (the orange circle)
+            const mover = document.querySelector('.mover');
+            const swiperContainer = document.querySelector('.mySwiper');
+            
+            if (mover && swiperContainer) {
+                // Show mover on mouse enter
+                swiperContainer.addEventListener('mouseenter', function() {
+                    mover.style.opacity = '1';
+                    mover.style.scale = '1';
+                    mover.innerHTML = '<p style="color: white; font-weight: bold; font-size: 14px;">DRAG</p>';
+                });
+                
+                // Hide mover on mouse leave
+                swiperContainer.addEventListener('mouseleave', function() {
+                    mover.style.opacity = '0';
+                    mover.style.scale = '0';
+                });
+                
+                // Follow mouse movement
+                swiperContainer.addEventListener('mousemove', function(e) {
+                    mover.style.left = e.clientX + 'px';
+                    mover.style.top = e.clientY + 'px';
+                });
+                
+                // Change cursor when dragging
+                swiper.on('touchStart', function() {
+                    if (mover) {
+                        mover.innerHTML = '<p style="color: white; font-weight: bold; font-size: 14px;">DRAGGING</p>';
+                    }
+                });
+                
+                swiper.on('touchEnd', function() {
+                    if (mover) {
+                        mover.innerHTML = '<p style="color: white; font-weight: bold; font-size: 14px;">DRAG</p>';
+                    }
+                });
+            }
+            
+            console.log('Swiper initialized successfully!');
+            return swiper;
+        }
+    } else {
+        console.error('Swiper library not loaded. Please include Swiper CSS and JS files in your HTML.');
+        console.log('Add these to your <head> section:');
+        console.log('<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />');
+        console.log('<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>');
+    }
+}
+
+// ==========================================
 // INITIALIZE EVERYTHING
 // ==========================================
 document.addEventListener('DOMContentLoaded', () => {
@@ -196,6 +324,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Initialize Burger Menu with locomotive scroll instance and mobile flag
     initBurgerMenu(locoScroll, isMobile);
+    
+    // Initialize Swiper
+    initSwiper();
 });
 
 // ==========================================
@@ -245,3 +376,41 @@ function updateActiveNavLink() {
 
 // Uncomment to enable active nav links
 // updateActiveNavLink();
+
+
+const burgerMenu = document.querySelector('.burger-menu');
+const navCenter = document.querySelector('.nav-center');
+const navOverlay = document.querySelector('.nav-overlay');
+const navLinks = document.querySelectorAll('.nav-center ul li a');
+
+// Toggle menu
+burgerMenu.addEventListener('click', () => {
+  burgerMenu.classList.toggle('active');
+  navCenter.classList.toggle('active');
+  navOverlay.classList.toggle('active');
+});
+
+// Close menu when overlay is clicked
+navOverlay.addEventListener('click', () => {
+  burgerMenu.classList.remove('active');
+  navCenter.classList.remove('active');
+  navOverlay.classList.remove('active');
+});
+
+// Close menu when clicking X (before pseudo-element)
+navCenter.addEventListener('click', (e) => {
+  if (e.target === navCenter) {
+    burgerMenu.classList.remove('active');
+    navCenter.classList.remove('active');
+    navOverlay.classList.remove('active');
+  }
+});
+
+// Close menu when clicking any link
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    burgerMenu.classList.remove('active');
+    navCenter.classList.remove('active');
+    navOverlay.classList.remove('active');
+  });
+});

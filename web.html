@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>TEONVO — Editorial</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:100%;height:100%;}
+body{
+  font-family:Helvetica,Arial,sans-serif;
+  background:#fff;
+  color:#000;
+}
+
+/* ===== SMOOTH ===== */
+#smooth-wrapper{overflow:hidden;}
+#smooth-content{overflow:hidden;}
+
+/* ===== NAV ===== */
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:22px 70px;
+  font-size:12px;
+  text-transform:uppercase;
+  position:relative;
+  z-index:99;
+}
+.nav-links a{margin-right:18px;}
+.logo{font-weight:900;font-size:18px;}
+
+/* BURGER */
+.burger{
+  display:none;
+  flex-direction:column;
+  cursor:pointer;
+}
+.burger span{
+  width:26px;
+  height:2px;
+  background:#000;
+  margin:5px 0;
+}
+
+/* MOBILE MENU */
+.mobile-menu{
+  position:fixed;
+  top:0;left:0;
+  width:100%;
+  height:100vh;
+  background:#fff;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:30px;
+  transform:translateY(-100%);
+  z-index:98;
+}
+.mobile-menu a{
+  font-size:26px;
+  font-weight:900;
+  text-transform:uppercase;
+}
+
+/* ===== HERO ===== */
+.hero{position:relative;padding:120px 70px 200px;}
+.hero-left img{width:230px;}
+.hero-right img{
+  position:absolute;
+  top:60px;right:70px;
+  width:460px;
+}
+.hero-text{
+  font-size:160px;
+  font-weight:900;
+  line-height:.88;
+  margin-top:120px;
+}
+.hero-text span{display:block;}
+
+/* ===== SECTIONS ===== */
+.statement{padding:160px 70px;}
+.statement h2{font-size:72px;font-weight:900;}
+
+.editorial{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:70px;
+  padding:140px 70px;
+}
+.editorial img{
+  width:100%;
+  transition:transform .8s ease;
+}
+.editorial-item:hover img{transform:scale(1.12);}
+.editorial-text{font-size:14px;line-height:1.7;}
+
+.era{padding:200px 70px;position:relative;}
+.era h1{font-size:180px;font-weight:900;line-height:.82;}
+.era span{position:absolute;bottom:30px;left:70px;font-size:26px;}
+
+.cta{
+  padding:160px 70px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-top:1px solid #000;
+}
+.cta h1{font-size:82px;font-weight:900;}
+.arrow{font-size:90px;}
+
+footer{padding:80px 70px;}
+.footer-row{
+  display:flex;
+  justify-content:space-between;
+  font-size:12px;
+  margin-bottom:20px;
+}
+footer small{font-size:10px;opacity:.6;}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1024px){
+  .hero-text{font-size:110px;}
+  .era h1{font-size:120px;}
+}
+
+@media(max-width:768px){
+  nav{padding:20px 30px;}
+  .nav-links{display:none;}
+  .burger{display:flex;}
+
+  .hero{padding:80px 30px 120px;}
+  .hero-text{font-size:72px;}
+  .hero-right img{
+    position:static;
+    width:100%;
+    margin-top:40px;
+  }
+
+  .statement{padding:80px 30px;}
+  .statement h2{font-size:48px;}
+
+  .editorial{
+    grid-template-columns:1fr;
+    padding:80px 30px;
+  }
+
+  .era{padding:120px 30px;}
+  .era h1{font-size:80px;}
+  .era span{left:30px;}
+
+  .cta{
+    flex-direction:column;
+    gap:40px;
+    padding:100px 30px;
+  }
+  .cta h1{font-size:52px;}
+
+  footer{padding:60px 30px;}
+}
+</style>
+</head>
+
+<body>
+
+<div id="smooth-wrapper">
+<div id="smooth-content" data-scroll-container>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a>Studio</a>
+  <a>AI</a>
+  <a>Design</a>
+  <a>Research</a>
+  <a>Contact</a>
+</div>
+
+<!-- NAV -->
+<nav data-scroll>
+  <div class="nav-links">
+    <a>Studio</a>
+    <a>AI</a>
+    <a>Design</a>
+    <a>Research</a>
+  </div>
+
+  <div class="logo">TEONVO</div>
+
+  <div class="nav-links">
+    <a>Work</a>
+    <a>About</a>
+    <a>Contact</a>
+  </div>
+
+  <div class="burger" id="burger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" data-scroll>
+  <div class="hero-left" data-scroll data-scroll-speed="1">
+    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=500&q=80">
+  </div>
+
+  <div class="hero-right" data-scroll data-scroll-speed="-1">
+    <img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?auto=format&fit=crop&w=900&q=80">
+  </div>
+
+  <h1 class="hero-text">WE ARE<span>TEONVO</span></h1>
+</section>
+
+<section class="statement"><h2>EVERLASTING<br>NEW INTELLIGENCE</h2></section>
+
+<section class="editorial">
+  <div class="editorial-item">
+    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=600&q=80">
+  </div>
+  <div class="editorial-text">
+    TEONVO creates AI-powered digital products blending intelligence,
+    design, and engineering for the future.
+  </div>
+  <div class="editorial-item">
+    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80">
+  </div>
+</section>
+
+<section class="era"><h1>THE<br>FUTURE</h1><span>2025</span></section>
+
+<section class="cta">
+  <h1>READY TO<br>DIFFERENT?</h1>
+  <div class="arrow">↗</div>
+</section>
+
+<footer>
+  <div class="footer-row">
+    <span>Instagram</span>
+    <span>LinkedIn</span>
+    <span>Twitter</span>
+  </div>
+  <small>© 2025 TEONVO</small>
+</footer>
+
+</div>
+</div>
+
+<!-- SCRIPTS -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+/* Smooth scroll */
+const loco = new LocomotiveScroll({
+  el: document.querySelector("#smooth-content"),
+  smooth:true,
+  smartphone:{smooth:true},
+  tablet:{smooth:true}
+});
+loco.on("scroll", ScrollTrigger.update);
+ScrollTrigger.scrollerProxy("#smooth-content",{
+  scrollTop(v){return arguments.length?loco.scrollTo(v,0,0):loco.scroll.instance.scroll.y},
+  getBoundingClientRect(){return{top:0,left:0,width:innerWidth,height:innerHeight}}
+});
+ScrollTrigger.addEventListener("refresh",()=>loco.update());
+ScrollTrigger.refresh();
+
+/* Burger Menu */
+const burger=document.getElementById("burger");
+const menu=document.getElementById("mobileMenu");
+let open=false;
+
+burger.onclick=()=>{
+  open=!open;
+  gsap.to(menu,{y:open?0:"-100%",duration:.6,ease:"power4.out"});
+};
+
+/* Image reveal */
+gsap.utils.toArray("img").forEach(img=>{
+  gsap.from(img,{
+    opacity:0,
+    scale:1.2,
+    duration:1.2,
+    scrollTrigger:{
+      trigger:img,
+      scroller:"#smooth-content",
+      start:"top 85%"
+    }
+  });
+});
+</script>
+
+</body>
+</html>

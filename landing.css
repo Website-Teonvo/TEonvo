@@ -1,0 +1,87 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+    font-family: "Georgia", serif;
+}
+
+/* -----------------------------------
+   FULLSCREEN FIXED BACKGROUND IMAGES
+-------------------------------------- */
+.bg-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+/* EVERY background image */
+.bg-layer .img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity .7s ease-in-out;
+
+    background-size: cover !important;    /* <-- FULL COVER */
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed;         /* <-- FIXED IMAGE */
+}
+
+/* --- SET YOUR IMAGES HERE --- */
+.img1 { background-image: url("./20251117_181130(1).jpg"); }
+.img2 { background-image: url("./images/your-img-2.jpg"); }
+.img3 { background-image: url("./images/your-img-3.jpg"); }
+.img4 { background-image: url("./images/your-img-4.jpg"); }
+
+/* -----------------------------------
+   PANELS
+-------------------------------------- */
+.panel-container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    z-index: 5;   /* above background */
+}
+
+.panel {
+    width: 25%;
+    background: rgba(216, 192, 181, 0.92);
+    border-right: 1px solid rgba(0,0,0,0.25);
+    padding: 40px;
+    cursor: pointer;
+    position: relative;
+    transition: transform .7s ease-in-out;
+}
+
+.panel.active {
+    transform: translateY(-100%);
+}
+
+.panel h1 {
+    font-size: 180px;
+    font-weight: 900;
+}
+
+.num {
+    position: absolute;
+    bottom: 20px;
+    left: 40px;
+    font-size: 20px;
+}
+
+.desc {
+    margin-top: 20px;
+    font-size: 14px;
+    line-height: 1.5;
+}

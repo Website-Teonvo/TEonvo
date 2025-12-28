@@ -1,0 +1,154 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background: #f4f4f4;
+  color: #111;
+}
+
+/* NAV */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 60px;
+  background: #fff;
+  font-size: 14px;
+}
+
+/* HERO */
+.hero {
+  padding: 60px;
+  background: #fff;
+}
+
+.hero-text h1 {
+  font-size: 56px;
+  margin-bottom: 20px;
+}
+
+.hero-text p {
+  max-width: 400px;
+  color: #666;
+}
+
+.hero-images {
+  margin-top: 40px;
+  display: flex;
+  gap: 20px;
+}
+
+.hero-images img {
+  width: 32%;
+  border-radius: 8px;
+}
+
+/* SECTIONS */
+section {
+  padding: 80px 60px;
+}
+
+.tag {
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #999;
+}
+
+.about h2,
+.category h2,
+.projects h2,
+.testimonial h2,
+.cta h2 {
+  margin: 20px 0;
+  font-size: 36px;
+}
+
+/* STATS */
+.stats {
+  display: flex;
+  gap: 60px;
+  margin-top: 40px;
+}
+
+.stats h3 {
+  font-size: 36px;
+}
+
+/* FEATURE */
+.feature-card {
+  display: flex;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.feature-card img {
+  width: 50%;
+  border-radius: 8px;
+}
+
+.feature-text {
+  background: #111;
+  color: #fff;
+  padding: 40px;
+  width: 50%;
+}
+
+.feature-text button {
+  margin-top: 20px;
+  padding: 10px 16px;
+  background: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+/* PROJECTS */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.project img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+/* TESTIMONIAL */
+.testimonial-cards {
+  display: flex;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.t-card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 8px;
+}
+
+/* CTA */
+.cta {
+  text-align: center;
+  background: #111;
+  color: #fff;
+}
+
+.cta button {
+  margin-top: 20px;
+  padding: 14px 30px;
+  background: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+/* FOOTER */
+.footer {
+  padding: 30px;
+  text-align: center;
+  background: #fff;
+  font-size: 14px;
+}
